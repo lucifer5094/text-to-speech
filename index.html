@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <input id="inputText" type="text"  autofocus placeholder="Lucifer...">
+    <button onclick="speakText()">Speak</button>
+    <script>
+        function speakText() {
+            const inputText = document.getElementById('inputText');
+            const textToSpeak = inputText.value;
+
+            if ('speechSynthesis' in window) {
+                const speaker = new SpeechSynthesisUtterance(textToSpeak);
+                speaker.lang = 'hi-IN'; // Set the language to Hindi (India)
+                window.speechSynthesis.speak(speaker);
+            } else {
+                alert('Your browser does not support text to speech.');
+            }
+        }
+    </script>
+</body>
+</html>
